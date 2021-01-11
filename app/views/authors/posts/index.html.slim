@@ -1,29 +1,10 @@
-h1 Listing posts
+h4.d-flex.justify-content-between.mb-4
+  span Posts
+  = link_to 'New Post', new_post_path, class: 'btn btn-primary'
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th Published
-      th Published at
-      th Author
-      th
-      th
-      th
-
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.title
-        td = post.description
-        td = post.published
-        td = post.published_at
-        td = post.author
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Post', new_post_path
+- @posts.each do |post|
+  = link_to edit_post_path(post), class: 'text-decoration-none' do
+    .card.mb-3
+      .card-body
+        h5.card-title.text-dark.mb-1 = post.title
+        p.text-secondary.mb-0 = post.description

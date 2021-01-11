@@ -1,8 +1,7 @@
-h1 Editing post
-
-== render 'form'
-
-=> link_to 'Show', @post
-'|
-=< link_to 'Back', posts_path
-
+= link_to 'Back', posts_path, class: 'btn btn-primary mb-3'
+.row
+  .col-md-3
+    .card
+      .card-body
+        h4.card-title Editing Post
+        = render 'form', post: @post
