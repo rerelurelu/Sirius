@@ -44,3 +44,4 @@ config/environments/*.local.yml
 # others
 .idea/
 todo.md
+problems.md
