@@ -1,17 +1,46 @@
+= link_to 'Back', posts_path, class: 'btn btn-secondary mb-3'
 .row
   .col-md-3
-    = link_to 'Back', posts_path, class: 'btn btn-secondary mb-3'
     .card
       .card-body
         h4.card-title Editing Post
         = render 'form', post: @post
   .col-md-9
     .mb-3
-      = form_with(model: [@post, @paragraph]) do |form|
+      = form_with(model: [@post, @element], html: { class: 'float-left mr-1' }) do |form|
         = form.hidden_field :element_type, value: 'paragraph'
-        = form.submit "Paragraph", class: 'btn btn-primary'
-    - @post.elements.each do |element|
-      - if element.persisted?
-        = form_with(model: [@post, element]) do |form|
-          = form.rich_text_area :content
-          = form.submit "Save", class: 'btn btn-primary'
+        = form.submit "Paragraph", class: 'btn btn-dark'
+      = form_with(model: [@post, @element]) do |form|
+        = form.hidden_field :element_type, value: 'image'
+        = form.submit "Image", class: 'btn btn-dark'
+    .card
+      .card-body.pt-5
+        - @post.elements.each do |element|
+          - if element.persisted?
+            - if element.paragraph?
+              .mb-4.p-3.paragraph
+                .paragraph-content
+                  - if element.content.present?
+                    == element.content
+                  - else
+                    | Click to add content.
+                .paragraph-form.d-done
+                  = form_with(model: [@post, element]) do |form|
+                    = form.rich_text_area :content
+                    .mt-3.d-flex.justify-content-between
+                      div
+                        = form.submit "Save", class: 'btn btn-primary mr-1'
+                        a href="#" class='cancel btn btn-secondary' Cancel
+                      = link_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
+            - elsif element.image?
+              .mb-4.p-3.image
+                - if element.image.present?
+                  div
+                    = image_tag(element.image)
+                  = link_to 'Delete', post_element_path(@post, element), method: :delete, class: 'btn btn-danger mt-2 float-right', data: { confirm: 'Are you sure?' }
+                - else
+                  = form_with(model: [@post, element]) do |form|
+                    = form.file_field :image
+                    .mt-3
+                      = form.submit "Save", class: 'btn btn-primary mr-1'
+                      a href="#" class="cancel btn btn-secondary" Cancel
