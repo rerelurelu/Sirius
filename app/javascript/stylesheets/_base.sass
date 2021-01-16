@@ -8,12 +8,24 @@
     text-align: center
     img
       max-width: 80%
+    &:hover
+      .delete-btn
+        opacity: 1
+    .delete-btn
+      position: absolute
+      right: calc(10% + 38px) // the top right of the image
+      opacity: 0
+
   .post-card
     .header-img
       width: 100%
-      height: 100px
+      height: 120px
       background-size: cover
       background-position: center
+
+  #elements
+    list-style: none
+    padding-left: 0
 
 
 .input-image-text

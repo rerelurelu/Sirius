@@ -11,5 +11,11 @@ h4.d-flex.justify-content-between.mb-4
             - if post.header_image.present?
               .header-img style="background-image: url(#{url_for(post.header_image)});"
           .col-md-10
-            h5.card-title.text-dark.mb-1 = post.title
+            - if post.published?
+              span.badge.badge-primary.mb-3
+                | Published
+            - else
+              span.badge.badge-secondary.mb-3
+                | Unpublished
+            h5.card-title.text-dark.mb-2 = post.title
             p.text-secondary.mb-0 = post.description

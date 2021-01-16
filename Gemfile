@@ -43,6 +43,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'spring-watcher-listen'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -56,12 +58,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# login
+### add ###
 gem 'devise'
 
-# HTML to Slim
 gem 'slim-rails'
 gem "html2slim"
 
-# env
 gem 'config'
+
+gem "stimulus_reflex", "~> 3.4"
+gem 'redis-rails'
