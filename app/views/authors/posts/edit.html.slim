@@ -39,7 +39,7 @@
           | Unpublished
       .card-body.pt-5 data-controller="elements"
         - if @post.elements.none? { |element| element.persisted? }
-          .p-5.text-center
+          .p-4.text-center
             h2.text-secondary
               i.fas.fa-lightbulb
             p Click the icons above to add elements to this post.
@@ -57,9 +57,9 @@
                         - else
                           | Click to add content.
                           br
-                      .paragraph-form.d-done
+                      .paragraph-form.d-done.d-none id="element-#{ element.id }-form"
                         = form_with(model: [@post, element]) do |form|
-                          = form.rich_text_area :content
+                          = form.rich_text_area :content, id: "element_content_#{element.id}"
                           .mt-3.d-flex.justify-content-between
                             div
                               = form.submit "Save", class: 'btn btn-primary mr-1'
