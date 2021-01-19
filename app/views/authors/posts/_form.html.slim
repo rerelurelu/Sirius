@@ -16,7 +16,7 @@
     = f.label :header_image
     = f.file_field :header_image, class: 'form-control-file input-image-text'
     .mt-1
-      small Current image:
       - if post.header_image.present?
+        small Current image:
         = image_tag(post.header_image, width: '100%')
   .actions = f.submit class: 'btn btn-primary btn-block'
