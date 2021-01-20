@@ -6,4 +6,4 @@
         .card-body.d-flex.flex-column
           h5.card-title = post.title
           p.card-text = truncate(post.description, length: 250)
-          a.btn.btn-primary.mt-auto href="#" Read Post
+          = link_to "Read Post", blog_post_path(post), class: 'btn btn-primary mt-auto'

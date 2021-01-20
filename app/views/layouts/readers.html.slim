@@ -13,7 +13,7 @@ html
 
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body.bg-light.readers
+  body class="bg-light readers #{ controller_name } #{ action_name }"
     .container
       p.notice = notice
       p.alert = alert

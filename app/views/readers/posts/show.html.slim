@@ -1,0 +1,14 @@
+.row
+  .col-lg-10.offset-lg-1
+    .card.post-card.mb-5
+      .header-image style="background-image: url(#{url_for(post.header_image)})"
+      .card-body
+        .pl-5.pr-5.pt-4.pb-4
+          h1.card-title.mb-5 = post.title
+          - @post.elements.each do |element|
+            - if element.image?
+              .image-element.mb-5
+                = image_tag(element.image)
+            - else
+              .content-element
+                = element.content
