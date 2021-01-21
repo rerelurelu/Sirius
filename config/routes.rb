@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: "readers/home#index"
   get '/blog/:id' => 'readers/posts#show', as: :blog_post
 
+  # email test
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   scope module: 'authors' do
     resources :posts do
       resources :elements
