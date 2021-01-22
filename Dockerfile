@@ -10,6 +10,6 @@ RUN apt-get install -y \
 
 WORKDIR /sirius
 
-COPY Gemfile Gemfile.lock /sirius
+COPY Gemfile Gemfile.lock /sirius/
 
 RUN bundle install
